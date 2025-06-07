@@ -24,7 +24,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-surface/40 backdrop-blur-md sticky top-0 z-50 shadow-sm border border-white lg:border-[1px] lg:border-white rounded-xl">
+    <div className="lg:w-[900px] mx-auto bg-surface/40 backdrop-blur-md sticky md:top-[20px] z-50 shadow-sm">
+    <nav className="border border-white lg:border-[1px] rounded-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -89,7 +90,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </nav>
+    </nav></div>
   );
 };
 

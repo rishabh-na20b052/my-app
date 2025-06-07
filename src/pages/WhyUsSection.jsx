@@ -12,94 +12,95 @@ import { Award, Zap, Users, BadgePercent } from 'lucide-react'; // UPDATED IMPOR
 // const BarChart2Icon = IconPlaceholder;
 
 const WhyUsSection = () => {
-  const canvasRef = useRef(null);
+  
+  // const canvasRef = useRef(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  // useEffect(() => {
+  //   const canvas = canvasRef.current;
+  //   if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    let time = 0;
-    let animationId;
-    const canvasBackgroundColor = 'black';
+  //   const ctx = canvas.getContext('2d');
+  //   let time = 0;
+  //   let animationId;
+  //   const canvasBackgroundColor = 'black';
 
-    let waveData = Array(8).fill(0).map(() => ({
-      value: Math.random() * 0.5 + 0.1,
-      targetValue: Math.random() * 0.5 + 0.1,
-      speed: Math.random() * 0.02 + 0.01
-    }));
+  //   let waveData = Array(8).fill(0).map(() => ({
+  //     value: Math.random() * 0.5 + 0.1,
+  //     targetValue: Math.random() * 0.5 + 0.1,
+  //     speed: Math.random() * 0.02 + 0.01
+  //   }));
 
-    function resizeCanvas() {
-      if (canvas && canvas.parentElement) {
-        canvas.width = canvas.parentElement.offsetWidth;
-        canvas.height = canvas.parentElement.offsetHeight;
-      } else {
-        canvas.width = 0;
-        canvas.height = 0;
-      }
-    }
+  //   function resizeCanvas() {
+  //     if (canvas && canvas.parentElement) {
+  //       canvas.width = canvas.parentElement.offsetWidth;
+  //       canvas.height = canvas.parentElement.offsetHeight;
+  //     } else {
+  //       canvas.width = 0;
+  //       canvas.height = 0;
+  //     }
+  //   }
 
-    function updateWaveData() {
-      waveData.forEach(data => {
-        if (Math.random() < 0.01) {
-          data.targetValue = Math.random() * 0.7 + 0.1;
-        }
-        const diff = data.targetValue - data.value;
-        data.value += diff * data.speed;
-      });
-    }
+  //   function updateWaveData() {
+  //     waveData.forEach(data => {
+  //       if (Math.random() < 0.01) {
+  //         data.targetValue = Math.random() * 0.7 + 0.1;
+  //       }
+  //       const diff = data.targetValue - data.value;
+  //       data.value += diff * data.speed;
+  //     });
+  //   }
 
-    function draw() {
-      ctx.fillStyle = canvasBackgroundColor;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+  //   function draw() {
+  //     ctx.fillStyle = canvasBackgroundColor;
+  //     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      for (let i = 0; i < 8; i++) {
-        const freq = waveData[i].value * 7.0;
-        ctx.beginPath();
+  //     for (let i = 0; i < 8; i++) {
+  //       const freq = waveData[i].value * 7.0;
+  //       ctx.beginPath();
 
-        for (let x = 0; x < canvas.width; x += 1) {
-          const normalizedX = (x / canvas.width) * 2 - 1;
-          let px = normalizedX + i * 0.04 + freq * 0.03;
-          let py = Math.sin(px * 10 + time) * Math.cos(px * 2) * freq * 0.1 * ((i + 1) / 8);
-          const canvasY = (py + 1) * canvas.height / 2;
+  //       for (let x = 0; x < canvas.width; x += 1) {
+  //         const normalizedX = (x / canvas.width) * 2 - 1;
+  //         let px = normalizedX + i * 0.04 + freq * 0.03;
+  //         let py = Math.sin(px * 10 + time) * Math.cos(px * 2) * freq * 0.1 * ((i + 1) / 8);
+  //         const canvasY = (py + 1) * canvas.height / 2;
 
-          if (x === 0) {
-            ctx.moveTo(x, canvasY);
-          } else {
-            ctx.lineTo(x, canvasY);
-          }
-        }
+  //         if (x === 0) {
+  //           ctx.moveTo(x, canvasY);
+  //         } else {
+  //           ctx.lineTo(x, canvasY);
+  //         }
+  //       }
 
-        const intensity = Math.min(1, freq * 0.3);
-        const r = 59 + intensity * 100;
-        const g = 130 + intensity * 80;
-        const b = 246 + intensity * 0;
+  //       const intensity = Math.min(1, freq * 0.3);
+  //       const r = 59 + intensity * 100;
+  //       const g = 130 + intensity * 80;
+  //       const b = 246 + intensity * 0;
 
-        ctx.lineWidth = 1 + (i * 0.3);
-        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, 0.7)`;
-        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
-        ctx.shadowBlur = 5 + i;
-        ctx.stroke();
-        ctx.shadowBlur = 0;
-      }
-    }
+  //       ctx.lineWidth = 1 + (i * 0.3);
+  //       ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, 0.7)`;
+  //       ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
+  //       ctx.shadowBlur = 5 + i;
+  //       ctx.stroke();
+  //       ctx.shadowBlur = 0;
+  //     }
+  //   }
 
-    function animate() {
-      time += 0.02;
-      updateWaveData();
-      draw();
-      animationId = requestAnimationFrame(animate);
-    }
+  //   function animate() {
+  //     time += 0.02;
+  //     updateWaveData();
+  //     draw();
+  //     animationId = requestAnimationFrame(animate);
+  //   }
 
-    resizeCanvas();
-    animate();
-    window.addEventListener('resize', resizeCanvas);
+  //   resizeCanvas();
+  //   animate();
+  //   window.addEventListener('resize', resizeCanvas);
 
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationId);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', resizeCanvas);
+  //     cancelAnimationFrame(animationId);
+  //   };
+  // }, []);
 
   return (
     <section
@@ -108,7 +109,7 @@ const WhyUsSection = () => {
     >
       <canvas
         id="visualizer"
-        ref={canvasRef}
+        // ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none z-0"
       ></canvas>
 

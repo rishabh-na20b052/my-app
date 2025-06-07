@@ -8,6 +8,59 @@ html {
   scroll-behavior: smooth;
 }
 
+
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.loader {
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: #0071e2;
+  width: 130px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+  ;
+}
+
+
+
 .sonar-grid-container {
   position: absolute; /* Will be positioned within the left half of ImpactSection */
   width: 50vw; /* Half of the viewport width */
@@ -40,16 +93,6 @@ html {
   /* background: theme('colors.purple.500'); */
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
@@ -77,8 +120,9 @@ code {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 0.75rem;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
+
+
 
 .why-us-floating-card::before {
   content: '';
@@ -100,15 +144,10 @@ code {
 }
 
 .why-us-floating-card:hover::before {
-  background: linear-gradient(135deg, 
-    theme('colors.primary / 100%'),
-    theme('colors.purple.500 / 100%'),
-    theme('colors.pink.500 / 100%')
-  );
+  padding: 5px;
 }
 
 .why-us-floating-card:hover {
-  transform: translateY(-5px) scale(1.2);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  filter: invert(1) saturate(1.2);
 }
 
