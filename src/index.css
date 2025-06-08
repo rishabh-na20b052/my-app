@@ -144,10 +144,10 @@ code {
 }
 
 .why-us-floating-card:hover::before {
-  padding: 5px;
+  background: linear-gradient(135deg, 
+    theme('colors.pink.500 / 90%'),
+    theme('colors.purple.500 / 90%')
+  );
 }
 
-.why-us-floating-card:hover {
-  filter: invert(1) saturate(1.2);
-}
 

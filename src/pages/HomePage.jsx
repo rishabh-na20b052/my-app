@@ -4,6 +4,7 @@ import HeroSection from './HeroSection';
 import ServicesSection from './ServicesSection';
 import WhyUsSection from './WhyUsSection';
 import ImpactSection from './ImpactSection';
+import FAQSection from './FAQSection'; 
 import ContactSection from './ContactSection';
 // Loader is no longer managed here
 
@@ -15,6 +16,7 @@ const HomePage = ({ onHeroVideoReady }) => { // Accept prop from App.jsx
       <ServicesSection />
       <WhyUsSection />
       <ImpactSection />
+      <FAQSection />
       <ContactSection />
     </div>
   );
