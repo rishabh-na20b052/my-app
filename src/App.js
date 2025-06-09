@@ -42,7 +42,7 @@ function App() {
     // Wrap your entire application with BrowserRouter for routing
     <Router>
       {/* Use your CSS variable for the background color */}
-      <div className='bg-[rgb(var(--color-background))] min-h-screen'> {/* Added min-h-screen for consistent background */}
+      <div className='bg-black min-h-screen'> {/* Added min-h-screen for consistent background */}
         <Loader isLoading={isAppLoading} />
 
         {/* Conditionally render Navbar */}
