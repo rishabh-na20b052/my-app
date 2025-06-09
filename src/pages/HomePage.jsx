@@ -6,6 +6,7 @@ import WhyUsSection from './WhyUsSection';
 import ImpactSection from './ImpactSection';
 import FAQSection from './FAQSection'; 
 import ContactSection from './ContactSection';
+import AboutUsSection from './AboutUs';
 // Loader is no longer managed here
 
 const HomePage = ({ onHeroVideoReady }) => { // Accept prop from App.jsx
@@ -15,6 +16,7 @@ const HomePage = ({ onHeroVideoReady }) => { // Accept prop from App.jsx
       <HeroSection onSplineReady={onHeroVideoReady} /> {/* Pass callback down */}
       <ServicesSection />
       <WhyUsSection />
+      <AboutUsSection/>
       <ImpactSection />
       <FAQSection />
       <ContactSection />

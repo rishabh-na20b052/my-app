@@ -3,6 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+  :root { /* Or :root.dark if using class-based dark mode */
+    --color-brand-darkest: 22 28 31; /* As R G B values for opacity */
+    --color-brand-dark: 57 62 70;
+    --color-brand-primary: 0 173 181;
+    --color-brand-light: 238 238 238;
+    --color-brand-lightest: 255 255 255;
+
+    /* Semantic mappings */
+    --color-primary: var(--color-brand-primary);
+    --color-secondary: var(--color-brand-dark); /* Example */
+    --color-background: var(--color-brand-darkest);
+    --color-surface: var(--color-brand-dark);
+    --color-text-main: var(--color-brand-light);
+    --color-text-secondary: 204 204 204; /* 204,204,204 is #CCCCCC */
+  }
+}
+
+
 /* ... your other custom styles ... */
 html {
   scroll-behavior: smooth;

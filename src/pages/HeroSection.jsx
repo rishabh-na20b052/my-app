@@ -48,17 +48,18 @@ const HeroSection = ({ onSplineReady }) => {
           title="Spline 3D Background"
         ></iframe>
       </div>
-      <div className="absolute inset-0 bg-black/30 z-10"></div>
+      {/* <div className="absolute inset-0 bg-black/30 z-10"></div> */}
       <div className="relative z-20 container mx-auto px-4">
         {/* ... rest of your hero content ... */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 mb-6 animate-fade-in-up"
-            style={{ animationDelay: '0.2s' }}>
-          From Idea to IPO — We’re With You.
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 mb-6 animate-fade-in-up"
+              style={{ animationDelay: '0.2s' }}>
+          AI-Native Product Development for High-Velocity Founders
         </h1>
-        <p className="max-w-3xl mx-auto text-lg md:text-xl text-text-secondary mb-10 animate-fade-in-up"
-           style={{ animationDelay: '0.4s' }}>
-          Alteryx Codeit empowers budding entrepreneurs to transform ideas into large-scale businesses.
-          Everything you need to succeed, from tech infrastructure to growth strategy and investor access.
+        <p className="max-w-3xl mx-auto text-base md:text-lg text-text-secondary my-20 animate-fade-in-up"
+          style={{ animationDelay: '0.4s' }}>
+          We’re an AI-first tech partner for early-stage startups — building Fast, 
+          Scalable Software Systems with compounding advantages in Cost, Speed, 
+          and Adaptability. Go from idea to launch with an experienced team from top global MNCs and IITs.
         </p>
         <div className="animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <div className="flex flex-row flex-wrap justify-center gap-x-8 gap-y-4">
@@ -68,12 +69,12 @@ const HeroSection = ({ onSplineReady }) => {
                 Get Consultation
               </span>
             </a>
-            <a
+            {/* <a
               href="#services"
               className="inline-flex h-12 items-center text-text-secondary hover:text-text-main font-semibold px-8 py-3 rounded-lg text-lg border border-text-secondary/30 hover:border-text-secondary/70 transition-colors opacity-70 hover:opacity-100"
             >
               Learn More
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
