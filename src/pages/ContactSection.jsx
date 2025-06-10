@@ -21,10 +21,10 @@ const ContactSection = () => {
         minWidth: 200.00,
         scale: 1.00,
         scaleMobile: 1.00,
-        color: 0x6eacda,      // Your --color-brand-primary (110, 172, 218)
-        color2: 0x03346e,     // Your --color-brand-dark (3, 52, 110)
+        color: 0x00ADB5,      // Your --color-brand-primary (0, 173, 181)
+        color2: 0x393E46,     // Your --color-brand-dark (57, 62, 70)
         size: 1.20,
-        backgroundColor: 0x021526, // Your --color-brand-darkest (2, 21, 38)
+        backgroundColor: 0x222831, // Your --color-brand-darkest (34, 40, 49)
       });
       setVantaEffect(effect);
     }

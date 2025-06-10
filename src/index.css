@@ -6,10 +6,10 @@
 
 @layer base {
   :root { /* Or :root.dark if using class-based dark mode */
-    --color-brand-darkest: 2 21 38; /* As R G B values for opacity */
-    --color-brand-dark: 3 52 110;
-    --color-brand-primary: 110 172 218;
-    --color-brand-light: 226 226 182;
+    --color-brand-darkest: 34 40 49; /* As R G B values for opacity */
+    --color-brand-dark: 57 62 70;
+    --color-brand-primary: 0 173 181;
+    --color-brand-light: 238 238 238;
     --color-brand-lightest: 255 255 255;
 
     /* Semantic mappings */
