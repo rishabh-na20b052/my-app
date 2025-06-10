@@ -1,3 +1,4 @@
+// src/sections/ContactSection.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import VANTA from 'vanta/dist/vanta.globe.min';
 import * as THREE from 'three';
@@ -5,10 +6,11 @@ import * as THREE from 'three';
 const ContactSection = () => {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
-  const [formStatus, setFormStatus] = useState(''); // To show submission status
+  const [formStatus, setFormStatus] = useState('');
 
   useEffect(() => {
     if (!vantaEffect && vantaRef.current) {
+      // --- VANTA COLORS UPDATED TO MATCH YOUR THEME ---
       const effect = VANTA({
         el: vantaRef.current,
         THREE: THREE,
@@ -19,22 +21,18 @@ const ContactSection = () => {
         minWidth: 200.00,
         scale: 1.00,
         scaleMobile: 1.00,
-        color: 0x3b82f6,
-        color2: 0x8b5cf6,
+        color: 0x6eacda,      // Your --color-brand-primary (110, 172, 218)
+        color2: 0x03346e,     // Your --color-brand-dark (3, 52, 110)
         size: 1.20,
-        backgroundColor: 0x0a0a0a,
+        backgroundColor: 0x021526, // Your --color-brand-darkest (2, 21, 38)
       });
       setVantaEffect(effect);
     }
     return () => {
-      if (vantaEffect) {
-        vantaEffect.destroy();
-        setVantaEffect(null);
-      }
+      if (vantaEffect) vantaEffect.destroy();
     };
   }, [vantaEffect]);
 
-  // Basic AJAX submission for Formspree to avoid page reload and show status
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -44,111 +42,85 @@ const ContactSection = () => {
       const response = await fetch(form.action, {
         method: form.method,
         body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       });
       if (response.ok) {
         setFormStatus('Thanks for your message! We will get back to you soon.');
-        form.reset(); // Clear the form
+        form.reset();
       } else {
-        // Handle server errors from Formspree
-        const responseData = await response.json();
-        if (responseData.errors && responseData.errors.length > 0) {
-          setFormStatus(responseData.errors.map(error => error.message).join(', '));
-        } else {
-          setFormStatus('Oops! There was a problem submitting your form.');
-        }
+        setFormStatus('Oops! There was a problem submitting your form.');
       }
     } catch (error) {
-      // Handle network errors
       setFormStatus('Oops! There was a problem submitting your form.');
     }
   };
 
-
   return (
     <section
       id="contact"
-      className="relative py-16 md:py-24 min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative py-24 md:py-32 min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <div
-        ref={vantaRef}
-        className="absolute inset-0 w-full h-full z-0"
-      ></div>
+      <div ref={vantaRef} className="absolute inset-0 w-full h-full z-0"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto bg-surface/40 backdrop-blur-md rounded-xl shadow-2xl border border-white/10 overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-[rgb(var(--color-surface)/0.5)] backdrop-blur-lg rounded-2xl shadow-2xl border border-[rgb(var(--color-primary)/0.2)] overflow-hidden">
           <div className="md:flex">
-            <div className="md:w-1/2 p-6 sm:p-8 md:p-10 order-2 md:order-1">
-              {/* --- FORM ACTION UPDATED --- */}
+            <div className="md:w-1/2 p-6 sm:p-8 md:p-10">
               <form
-                action="https://formspree.io/f/xzzgzlek" // <<<< REPLACE THIS WITH YOUR FORMPSREE ENDPOINT
+                action="https://formspree.io/f/xzzgzlek" // REMEMBER TO REPLACE THIS
                 method="POST"
-                onSubmit={handleFormSubmit} // Use custom submit handler for AJAX
+                onSubmit={handleFormSubmit}
               >
-                {/* Optional: You can add a subject line for your emails from Formspree */}
-                {/* <input type="hidden" name="_subject" value="New Contact Form Submission from MyCodeIt!" /> */}
-
-                {/* Optional: Tell Formspree where to redirect after success (if not using AJAX) */}
-                {/* <input type="hidden" name="_next" value="https://mycodeit.com/thank-you-page" /> */}
-
                 <div className="grid grid-cols-1 gap-5">
                   <div>
-                    <label htmlFor="name" className="block text-xs font-medium text-text-secondary mb-1">Full Name</label>
-                    <input
-                      type="text" name="name" id="name" required
-                      className="block w-full bg-background/80 border-surface placeholder-text-secondary/50 text-text-main text-sm rounded-md py-2 px-3 shadow-sm focus:border-primary focus:ring-1 focus:ring-primary"
-                    />
+                    <label htmlFor="name" className="block text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Full Name</label>
+                    <input type="text" name="name" id="name" required className="form-input" />
                   </div>
                   <div>
-                    {/* Formspree uses 'email' or '_replyto' for the sender's email */}
-                    <label htmlFor="email" className="block text-xs font-medium text-text-secondary mb-1">Email Address</label>
-                    <input
-                      type="email" name="email" id="email" required // or name="_replyto"
-                      className="block w-full bg-background/80 border-surface placeholder-text-secondary/50 text-text-main text-sm rounded-md py-2 px-3 shadow-sm focus:border-primary focus:ring-1 focus:ring-primary"
-                    />
+                    <label htmlFor="email" className="block text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Email Address</label>
+                    <input type="email" name="email" id="email" required className="form-input" />
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-xs font-medium text-text-secondary mb-1">Company (Optional)</label>
-                    <input
-                      type="text" name="company" id="company"
-                      className="block w-full bg-background/80 border-surface placeholder-text-secondary/50 text-text-main text-sm rounded-md py-2 px-3 shadow-sm focus:border-primary focus:ring-1 focus:ring-primary"
-                    />
+                    <label htmlFor="phone" className="block text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Phone Number</label>
+                    <input type="phone" name="phone" id="phone" required className="form-input" />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-xs font-medium text-text-secondary mb-1">Your Idea / Message</label>
-                    <textarea
-                      name="message" id="message" rows="3" required
-                      className="block w-full bg-background/80 border-surface placeholder-text-secondary/50 text-text-main text-sm rounded-md py-2 px-3 shadow-sm focus:border-primary focus:ring-1 focus:ring-primary"
-                    ></textarea>
+                    <label htmlFor="company" className="block text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Company (Optional)</label>
+                    <input type="text" name="company" id="company" className="form-input" />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Your Idea / Message</label>
+                    <textarea name="message" id="message" rows="3" required className="form-input"></textarea>
                   </div>
                   <div>
                     <button
                       type="submit"
-                      className="w-full flex justify-center bg-primary hover:bg-primary-hover text-white font-semibold py-2.5 px-4 text-sm rounded-md shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+                      className="w-full flex justify-center text-[rgb(var(--color-brand-lightest))] font-semibold py-2.5 px-4 text-sm rounded-md shadow-lg 
+                                 transition-all transform hover:-translate-y-1 
+                                 bg-gradient-to-r from-[rgb(var(--color-primary))] to-[rgb(var(--color-secondary))]
+                                 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:ring-offset-2 focus:ring-offset-[rgb(var(--color-surface))]"
                     >
                       Send Message
                     </button>
                   </div>
                 </div>
               </form>
-              {/* Display form submission status */}
               {formStatus && (
                 <p className={`text-center mt-4 text-sm ${formStatus.startsWith('Oops') || formStatus.startsWith('Sending') ? 'text-red-400' : 'text-green-400'}`}>
                   {formStatus}
                 </p>
               )}
-              <p className="text-xs text-text-secondary text-center mt-6">
-                Or email us directly at <a href="mailto:mail@mycodeit.com" className="text-primary hover:underline">mail@mycodeit.com</a>
+              <p className="text-xs text-[rgb(var(--color-text-secondary))] text-center mt-6">
+                Or email us directly at <a href="mailto:mail@mycodeit.com" className="text-[rgb(var(--color-primary))] hover:underline">mail@mycodeit.com</a>
               </p>
             </div>
 
-            <div className="md:w-1/2 p-6 sm:p-8 md:p-10 order-1 md:order-2 flex flex-col justify-center">
-              <h2 className="text-3xl xl:text-4xl font-bold text-text-main mb-3 text-center md:text-left">
+            <div className="md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-center bg-[rgb(var(--color-surface)/0.2)]">
+              <h2 className="text-3xl xl:text-4xl font-bold mb-3 text-center md:text-left
+                             text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--color-text-main))] to-[rgb(var(--color-primary))]">
                 Ready to Build Your Dream?
               </h2>
-              <p className="text-text-secondary mb-8 text-sm md:text-base text-center md:text-left">
+              <p className="text-[rgb(var(--color-text-secondary))] mb-8 text-sm md:text-base text-center md:text-left">
                 Let's discuss how CodeIt can help you launch and scale your vision from idea to reality.
               </p>
             </div>

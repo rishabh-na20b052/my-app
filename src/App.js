@@ -1,18 +1,18 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
-// Change BrowserRouter to HashRouter
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Navbar from './components/layout/Navbar';
+import Navbar from './components/layout/Navbar'; // <--- RE-ADD THIS IMPORT
 import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import Loader from './components/common/Loader';
 
-// Import your new pages
-import PrivacyPolicy from './components/common/PrivacyPolicy'; // Adjusted import path
-import TermsAndConditions from './components/common/TermsAndConditions';
+// Assuming corrected import paths for your pages
+import PrivacyPolicy from './components/common/PrivacyPolicy'; // Corrected path (from components/common)
+import TermsAndConditions from './components/common/TermsAndConditions'; // Corrected path (from components/common)
 
 function App() {
+  
   const [isAppLoading, setIsAppLoading] = useState(true);
 
   const handleHeroVideoReady = () => {
@@ -31,19 +31,21 @@ function App() {
 
 
   return (
-    // Use HashRouter instead of BrowserRouter
     <Router>
-      <div className='bg-black min-h-screen'>
+      <div className='bg-[rgb(var(--color-background))] min-h-screen'>
         <Loader isLoading={isAppLoading} />
 
+        {/* <--- RE-ADD NAVBAR CONDITIONAL RENDERING */}
         {!isAppLoading && (
           <Navbar />
         )}
 
         <div
           className={`transition-opacity duration-700 ease-in-out ${
-            isAppLoading ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'
+            isAppLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}
+          // Optional: Add a min-height for the content area to prevent sudden collapse if content is very short
+          style={isAppLoading ? { minHeight: '100vh' } : {}}
         >
           <Routes>
             <Route path="/" element={<HomePage onHeroVideoReady={handleHeroVideoReady} />} />

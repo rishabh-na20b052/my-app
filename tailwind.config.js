@@ -25,14 +25,17 @@ export default {
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
-        'blob': 'blob 7s infinite', // <--- ADDED: Blob animation for background
+        'blob': 'blob 7s infinite',
+        'hero-gradient': 'hero-gradient 15s ease infinite', // <-- ADDED
+        'marquee-left': 'marquee-left 60s linear infinite',
+        'marquee-right': 'marquee-right 60s linear infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-8px)' }, // You can adjust the -8px to control float height
+          '50%': { transform: 'translateY(-8px)' },
         },
-        blob: { // <--- ADDED: Blob keyframes
+        blob: {
           "0%": {
             transform: "translate(0px, 0px) scale(1)",
           },
@@ -45,6 +48,24 @@ export default {
           "100%": {
             transform: "translate(0px, 0px) scale(1)",
           },
+        },
+        'hero-gradient': { 
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': '50% 0%',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': '50% 100%',
+          },
+        },
+        'marquee-left': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        'marquee-right': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
         },
       }
     },

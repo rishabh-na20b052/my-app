@@ -6,10 +6,10 @@
 
 @layer base {
   :root { /* Or :root.dark if using class-based dark mode */
-    --color-brand-darkest: 22 28 31; /* As R G B values for opacity */
-    --color-brand-dark: 57 62 70;
-    --color-brand-primary: 0 173 181;
-    --color-brand-light: 238 238 238;
+    --color-brand-darkest: 2 21 38; /* As R G B values for opacity */
+    --color-brand-dark: 3 52 110;
+    --color-brand-primary: 110 172 218;
+    --color-brand-light: 226 226 182;
     --color-brand-lightest: 255 255 255;
 
     /* Semantic mappings */
@@ -22,7 +22,16 @@
   }
 }
 
-
+@layer components {
+  /* ... your other custom components like .why-us-floating-card ... */
+  
+  .form-input {
+    @apply block w-full text-sm rounded-md py-2 px-3 shadow-sm transition-all duration-200;
+    @apply bg-[rgb(var(--color-background)/0.8)] border border-[rgb(var(--color-surface))];
+    @apply placeholder:text-[rgb(var(--color-text-secondary)/0.5)] text-[rgb(var(--color-text-main))];
+    @apply focus:border-[rgb(var(--color-primary))] focus:ring-1 focus:ring-[rgb(var(--color-primary))] focus:bg-[rgb(var(--color-surface))];
+  }
+}
 /* ... your other custom styles ... */
 html {
   scroll-behavior: smooth;
@@ -126,48 +135,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-
-.why-us-floating-card {
-  position: relative;
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 0.75rem;
-}
-
-
-
-.why-us-floating-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 2px;
-  background: linear-gradient(135deg, 
-    theme('colors.primary / 90%'),
-    theme('colors.purple.500 / 90%'),
-    theme('colors.pink.500 / 90%')
-  );
-  border-radius: inherit;
-  mask: 
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  -webkit-mask-composite: xor;
-  z-index: -1;
-}
-
-.why-us-floating-card:hover::before {
-  background: linear-gradient(135deg, 
-    theme('colors.pink.500 / 90%'),
-    theme('colors.purple.500 / 90%')
-  );
-}
-
-

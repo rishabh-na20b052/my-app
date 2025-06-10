@@ -1,67 +1,78 @@
 // src/components/AboutUsSection.jsx
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-// A reusable component for each section with scroll animation
-const ScrollAnimatedSection = ({ title, content }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
+// Animation variant for items sliding in from the sides
+const itemVariants = (fromLeft = true) => ({
+  hidden: {
+    opacity: 0,
+    x: fromLeft ? -50 : 50,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+});
 
-  // Map scrollYProgress to scale:
-  // 0% visible (at bottom of viewport): scale 0.9
-  // 50% visible (roughly centered in viewport): scale 1.05 (pop!)
-  // 100% visible (at top of viewport, leaving): scale 0.9 (shrink back down)
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.05, 0.9]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.5, 1, 1, 0.5]); // Also fade in/out slightly
+// A reusable component for each content block
+const InfoBlock = ({ title, content, alignment = 'left' }) => {
+  const isLeftAligned = alignment === 'left';
+  // On mobile, everything is left-aligned for better readability
+  const textAlignClass = isLeftAligned ? 'md:text-left' : 'md:text-right';
+  const containerAlignClass = isLeftAligned ? 'md:items-start' : 'md:items-end';
 
   return (
     <motion.div
-      ref={ref}
-      style={{ scale, opacity }}
-      // Added text-center here to align content within the card
-      className="bg-[rgb(var(--color-surface))] p-8 md:p-12 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 mb-12 // Reduced mb from 16 to 12
-                 transform origin-center border border-[rgba(var(--color-primary),0.2)] text-center" // <-- ADDED text-center
+      variants={itemVariants(isLeftAligned)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      // On mobile, all blocks are centered horizontally before taking full width
+      className={`flex flex-col items-center md:items-stretch ${containerAlignClass} max-w-2xl w-full text-center md:text-left`}
     >
-      <h2 className="text-4xl md:text-5xl font-extrabold text-[rgb(var(--color-text-main))] mb-6">
+      <h2 className={`text-4xl md:text-5xl font-extrabold mb-6 text-[rgb(var(--color-background))] ${textAlignClass}`}>
         {title}
       </h2>
-      <p className="text-lg md:text-xl text-[rgb(var(--color-text-secondary))] leading-relaxed whitespace-pre-line">
+      <p className={`text-lg md:text-xl text-[rgba(var(--color-background),0.75)] leading-relaxed whitespace-pre-line ${textAlignClass}`}>
         {content}
       </p>
     </motion.div>
   );
 };
 
+
 const AboutUsSection = () => {
   return (
-    <section className="relative min-h-[100vh] 
-                        flex flex-col justify-center items-center py-24 md:py-32
-                        bg-[rgb(var(--color-background))]
-                        bg-[radial-gradient(circle_at_top_left,_rgba(var(--color-primary),0.05),_transparent_40%),_radial-gradient(circle_at_bottom_right,_rgba(var(--color-brand-dark),0.1),_transparent_50%)]
-                        overflow-hidden">
-      <div className="max-w-2xl lg:max-w-3xl mx-auto px-6 z-10"> {/* <-- REDUCED WIDTH: Changed from 3xl/4xl to 2xl/3xl */}
-        <ScrollAnimatedSection
-          // Icons removed from separate prop and just included in the title string
+    <section 
+      id="about-us" 
+      className="py-24 md:py-32 
+                 // --- NEW, WARMER GRADIENT ---
+                 // Starts with your cream color and fades to a slightly lighter version.
+                 bg-gradient-to-br from-[rgb(var(--color-brand-light))] to-[rgb(var(--color-brand-light)/0.7)]
+                 // --- SUBTLE BORDER ---
+                 // Adds a top and bottom border using your primary color for definition.
+                 border-t border-b border-[rgb(var(--color-primary)/0.2)]"
+    >
+      <div className="container mx-auto px-6 flex flex-col items-center gap-24 md:gap-32">
+        {/* First Block: Left Aligned */}
+        <InfoBlock
+          alignment="left"
           title="Who We Work With"
-          content={`We work with early-stage founders, business first entrepreneurs, and digital teams across industries. Whether you're building your MVP, scaling internal systems, or preparing to go live - we can help.`}
+          content={`We work with early-stage founders, business-first entrepreneurs, and digital teams across industries. Whether you're building your MVP, scaling internal systems, or preparing to go live - we can help.`}
         />
 
-        <ScrollAnimatedSection
+        {/* Second Block: Right Aligned */}
+        <InfoBlock
+          alignment="right"
           title="Who We Are"
           content={`We're a team of experienced product builders, engineers, and GTM operators from top-tier companies like Google, AB InBev, Meesho, Appian, Amazon, and BCG.
 
 We’re AI-native. We think in systems. We care about velocity. And we ship with you, not for you.`}
         />
-      </div>
-
-      {/* --- Animated Background Blobs using your color palette --- */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="w-96 h-96 bg-[rgb(var(--color-primary))] rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob top-10 left-10"></div>
-        <div className="w-96 h-96 bg-[rgb(var(--color-brand-dark))] rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 bottom-10 right-10"></div>
-        <div className="w-96 h-96 bg-[rgb(var(--color-text-secondary))] rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
       </div>
     </section>
   );
