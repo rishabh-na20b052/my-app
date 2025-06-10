@@ -48,7 +48,7 @@ const InfoBlock = ({ title, content, alignment = 'left' }) => {
 const AboutUsSection = () => {
   return (
     <section 
-      id="about-us" 
+      id="about" 
       className="py-24 md:py-32 
                  // --- NEW, WARMER GRADIENT ---
                  // Starts with your cream color and fades to a slightly lighter version.

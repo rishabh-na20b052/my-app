@@ -67,7 +67,7 @@ const WhyUsSection = () => {
   const x = useTransform(scrollYProgress, [0, 1], [0, -scrollOffset]);
 
   return (
-    <section id="why-us" ref={targetRef} className="relative h-[300vh] bg-[rgb(var(--color-background))]">
+    <section id="how-we" ref={targetRef} className="relative h-[300vh] bg-[rgb(var(--color-background))]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <AuroraBackground />
 
