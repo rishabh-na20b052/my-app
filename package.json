@@ -1,9 +1,9 @@
 {
-  "name": "my-app",
+  "name": "mycodeit",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rishabh-na20b052.github.io/my-app/",
-  "description": "A React application with Vanta.js background and Tailwind CSS styling.",
+  "homepage": "https://mycodeit.com",
+  "description": "Altix Codeit helps budding entrepreneurs transform ideas into large-scale businesses. From tech infrastructure to growth strategy.",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

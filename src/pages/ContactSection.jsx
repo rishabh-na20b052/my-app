@@ -63,7 +63,7 @@ const ContactSection = () => {
       <div ref={vantaRef} className="absolute inset-0 w-full h-full z-0"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto bg-[rgb(var(--color-surface)/0.5)] backdrop-blur-lg rounded-2xl shadow-2xl border border-[rgb(var(--color-primary)/0.2)] overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-[rgb(var(--color-surface)/0.2)] backdrop-blur-lg rounded-2xl shadow-2xl border border-[rgb(var(--color-primary)/0.2)] overflow-hidden">
           <div className="md:flex">
             <div className="md:w-1/2 p-6 sm:p-8 md:p-10">
               <form
@@ -114,8 +114,7 @@ const ContactSection = () => {
                 Or email us directly at <a href="mailto:mail@mycodeit.com" className="text-[rgb(var(--color-primary))] hover:underline">mail@mycodeit.com</a>
               </p>
             </div>
-
-            <div className="md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-center bg-[rgb(var(--color-surface)/0.2)]">
+            <div className="md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-center ">
               <h2 className="text-3xl xl:text-4xl font-bold mb-3 text-center md:text-left
                              text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--color-text-main))] to-[rgb(var(--color-primary))]">
                 Ready to Build Your Dream?
