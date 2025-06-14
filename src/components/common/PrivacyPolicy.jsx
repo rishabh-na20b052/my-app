@@ -1,11 +1,11 @@
 // src/pages/PrivacyPolicy.jsx
-import React from 'react';
+import React from "react";
 
 const PrivacyPolicy = () => {
-  const lastUpdated = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+  const lastUpdated = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 
   return (
@@ -19,7 +19,8 @@ const PrivacyPolicy = () => {
         </p>
 
         <p className="text-lg md:text-xl leading-relaxed mb-6">
-          We at Altryx CodeIt Technologies respect your privacy and are committed to protecting the information you share with us.
+          We at Altix CodeIt Technologies respect your privacy and are committed
+          to protecting the information you share with us.
         </p>
 
         <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--color-text-main))] mb-4">
@@ -43,31 +44,40 @@ const PrivacyPolicy = () => {
           Sharing Your Data
         </h2>
         <p className="text-lg md:text-xl leading-relaxed mb-6">
-          We do not sell or share your data with third parties, except to service providers necessary for operations, and only under secure agreements.
+          We do not sell or share your data with third parties, except to
+          service providers necessary for operations, and only under secure
+          agreements.
         </p>
 
         <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--color-text-main))] mb-4">
           Data Security
         </h2>
         <p className="text-lg md:text-xl leading-relaxed mb-6">
-          We implement best practices to protect your data against unauthorized access or misuse.
+          We implement best practices to protect your data against unauthorized
+          access or misuse.
         </p>
 
         <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--color-text-main))] mb-4">
           Your Rights
         </h2>
         <p className="text-lg md:text-xl leading-relaxed mb-6">
-          You may request to access, modify, or delete your data by contacting us at{' '}
-          <a href="mailto:hello@codeit.tech" className="text-[rgb(var(--color-primary))] hover:underline">
-            hello@codeit.tech
-          </a>.
+          You may request to access, modify, or delete your data by contacting
+          us at{" "}
+          <a
+            href="mailto:hello@codeit.tech"
+            className="text-[rgb(var(--color-primary))] hover:underline"
+          >
+            mail@mycodeit.com
+          </a>
+          .
         </p>
 
         <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--color-text-main))] mb-4">
           Payment Information
         </h2>
         <p className="text-lg md:text-xl leading-relaxed">
-          All payment transactions are handled securely by Razorpay. We do not store or process payment card details on our servers.
+          All payment transactions are handled securely by Razorpay. We do not
+          store or process payment card details on our servers.
         </p>
       </div>
     </div>

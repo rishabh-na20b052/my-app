@@ -1,24 +1,36 @@
 // src/sections/ImpactSection.jsx
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import SonarGridBackground from '../components/visuals/SonarGridBackground'; // Adjust path
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import SonarGridBackground from "../components/visuals/SonarGridBackground"; // Adjust path
 
 const clientNames = [
-  "Mojibooks", "Fratem", "Llama", "IronFocus", "Pupila",
-  "Ozarke", "OrderAxe", "JoolKart", "Zaakr Net", "Biogetica Health"
+  "Mojibooks",
+  "Fratem",
+  "Llama",
+  "IronFocus",
+  "Pupila",
+  "Ozarke",
+  "OrderAxe",
+  "JoolKart",
+  "Zaakr Net",
+  "Biogetica Health",
 ];
 
 // Reusable Marquee component, now simplified for this layout
-const MarqueeRow = ({ names, direction = 'left' }) => {
-  const animationClass = direction === 'left' 
-    ? 'animate-[marquee-left_60s_linear_infinite]' 
-    : 'animate-[marquee-right_60s_linear_infinite]';
+const MarqueeRow = ({ names, direction = "left" }) => {
+  const animationClass =
+    direction === "left"
+      ? "animate-[marquee-left_60s_linear_infinite]"
+      : "animate-[marquee-right_60s_linear_infinite]";
 
   return (
     <div className={`flex w-max ${animationClass}`}>
       {/* Render the list twice to ensure a seamless loop */}
       {[...Array(2)].map((_, i) => (
-        <div key={i} className="flex flex-shrink-0 items-center justify-around w-max gap-4 px-2">
+        <div
+          key={i}
+          className="flex flex-shrink-0 items-center justify-around w-max gap-4 px-2"
+        >
           {names.map((name, index) => (
             <div
               key={index}
@@ -41,11 +53,17 @@ const ImpactSection = () => {
     offset: ["start center", "end end"],
   });
 
-  // --- ANIMATION LOGIC (UNCHANGED, BUT WILL NOW BE VISIBLE) ---
-  const heroScale = useTransform(scrollYProgress, [0.1, 0.5], [1, 1.3]);
-  const heroOpacity = useTransform(scrollYProgress, [0.4, 0.6], [1, 0]);
-  const subheadOpacity = useTransform(scrollYProgress, [0.55, 0.7], [0, 1]);
-  const subheadY = useTransform(scrollYProgress, [0.65, 0.8], [20, 0]);
+  // --- UPDATED ANIMATION LOGIC WITH EVEN LONGER VISIBILITY ---
+  const heroScale = useTransform(scrollYProgress, [0.1, 0.4], [1, 1.3]);
+  // Extended the visibility range even more - "25+" now stays visible much longer
+  const heroOpacity = useTransform(
+    scrollYProgress,
+    [0.0, 0.1, 0.8, 0.9],
+    [0, 1, 1, 0]
+  );
+  // Delayed the subheading even more to appear later, giving maximum time for "25+" to shine
+  const subheadOpacity = useTransform(scrollYProgress, [0.85, 0.95], [0, 1]);
+  const subheadY = useTransform(scrollYProgress, [0.85, 0.95], [20, 0]);
 
   return (
     <section
@@ -59,7 +77,6 @@ const ImpactSection = () => {
 
       {/* --- NEW, CORRECTED LAYOUT --- */}
       <div className="relative z-10 w-full flex flex-col items-center justify-center space-y-12">
-
         {/* Top Marquee */}
         <div className="w-full mask-gradient-y">
           <MarqueeRow names={clientNames} direction="left" />
@@ -85,7 +102,6 @@ const ImpactSection = () => {
         <div className="w-full mask-gradient-y">
           <MarqueeRow names={[...clientNames].reverse()} direction="right" />
         </div>
-        
       </div>
     </section>
   );

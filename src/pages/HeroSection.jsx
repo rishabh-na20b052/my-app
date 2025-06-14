@@ -1,5 +1,5 @@
 // src/sections/HeroSection.jsx
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
 const HeroSection = ({ onSplineReady }) => {
   useEffect(() => {
@@ -11,10 +11,10 @@ const HeroSection = ({ onSplineReady }) => {
   // Smooth scroll handler for anchor links
   const handleNavClick = (e, href) => {
     e.preventDefault();
-    const id = href.replace('#', '');
+    const id = href.replace("#", "");
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -39,27 +39,34 @@ const HeroSection = ({ onSplineReady }) => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-transparent bg-clip-text
                        bg-gradient-to-r from-white to-[rgb(var(--color-primary))]
                        mb-6 animate-fade-in-up"
-            style={{ animationDelay: '0.2s' }}
+            style={{ animationDelay: "0.2s" }}
           >
             AI-Native Product Development in Weeks
           </h1>
           <p
             className="text-lg md:text-xl text-[rgb(var(--color-text-secondary))] my-8 animate-fade-in-up"
-            style={{ animationDelay: '0.4s' }}
+            style={{ animationDelay: "0.4s" }}
           >
-            Build Fast, Cost Efficient and Scalable Software systems with a team from top global MNCs and IITs.
+            Build Fast, Cost Efficient and Scalable Software systems with a team
+            from top global MNCs and IITs.
           </p>
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+          <div
+            className="animate-fade-in-up"
+            style={{ animationDelay: "0.6s" }}
+          >
             <div className="flex flex-row flex-wrap items-center justify-start gap-x-6 gap-y-4">
-              {/* --- CORRECTED PRIMARY BUTTON --- */}
+              {/* --- CORRECTED PRIMARY BUTTON WITH CALENDLY LINK --- */}
               <a
-                href="#contact"
-                onClick={e => handleNavClick(e, "#contact")}
+                href="https://calendly.com/shoaibmustaque10/appointment"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] group"
               >
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] 
-                               bg-[conic-gradient(from_90deg_at_50%_50%,rgb(var(--color-primary))_0%,rgb(var(--color-secondary))_50%,rgb(var(--color-primary))_100%)]" />
-                
+                <span
+                  className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] 
+                               bg-[conic-gradient(from_90deg_at_50%_50%,rgb(var(--color-primary))_0%,rgb(var(--color-secondary))_50%,rgb(var(--color-primary))_100%)]"
+                />
+
                 {/* FIX: Added `relative` to this span to ensure it sits on top of the absolute spinning span */}
                 <span
                   className="relative inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full
@@ -72,7 +79,7 @@ const HeroSection = ({ onSplineReady }) => {
               {/* Secondary button remains the same */}
               <a
                 href="#services"
-                onClick={e => handleNavClick(e, "#services")}
+                onClick={(e) => handleNavClick(e, "#services")}
                 className="inline-flex h-12 items-center justify-center font-semibold px-8 py-3 rounded-full text-white
                            bg-white/5 backdrop-blur-sm border border-white/20
                            hover:bg-white/10 hover:border-white/40 transition-all"
