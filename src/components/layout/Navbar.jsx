@@ -24,39 +24,8 @@ const Navbar = () => {
     }
   };
 
-  // ✅ Updated Logo component using SVG with Capital C and I
-  const CodeItLogo = () => (
-    <svg
-      width="120"
-      height="32"
-      viewBox="0 0 120 32"
-      className="flex-shrink-0 hover:scale-105 transition-transform duration-200"
-    >
-      <text
-        x="0"
-        y="22"
-        fontSize="18"
-        fontWeight="bold"
-        fontFamily="'Segoe UI', Arial, sans-serif"
-        fill="rgb(var(--color-text-main))"
-      >
-        Code
-      </text>
-      <text
-        x="45"
-        y="22"
-        fontSize="18"
-        fontWeight="bold"
-        fontFamily="'Segoe UI', Arial, sans-serif"
-        fill="#3498db"
-      >
-        It
-      </text>
-    </svg>
-  );
-
   return (
-    <div className="lg:w-[900px] mx-auto bg-[rgb(var(--color-surface))/0.7] backdrop-blur-md sticky md:top-5 z-50 shadow-xl shadow-black/20 rounded-xl mt-5">
+    <div className="lg:w-[900px] mx-auto bg-[rgb(var(--color-background))] bg-[rgb(var(--color-surface))/0.7] backdrop-blur-md sticky md:top-5 z-50 shadow-xl shadow-black/20 rounded-xl mt-5">
       <nav className="border border-[rgb(var(--color-text-main))/0.1] rounded-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -66,7 +35,7 @@ const Navbar = () => {
                 className="flex-shrink-0 flex items-center"
                 onClick={(e) => handleNavClick(e, "#")}
               >
-                <CodeItLogo />
+                <img src="/codeitLogo.png" alt="Logo" className="h-8" />
               </a>
             </div>
             <div className="hidden md:block">

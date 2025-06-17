@@ -58,8 +58,8 @@ const ImpactSection = () => {
   // Extended the visibility range even more - "25+" now stays visible much longer
   const heroOpacity = useTransform(
     scrollYProgress,
-    [0.0, 0.1, 0.8, 0.9],
-    [0, 1, 1, 0]
+    [0.0, 0.5],
+    [0, 1]
   );
   // Delayed the subheading even more to appear later, giving maximum time for "25+" to shine
   const subheadOpacity = useTransform(scrollYProgress, [0.85, 0.95], [0, 1]);
@@ -77,30 +77,26 @@ const ImpactSection = () => {
 
       {/* --- NEW, CORRECTED LAYOUT --- */}
       <div className="relative z-10 w-full flex flex-col items-center justify-center space-y-12">
-        {/* Top Marquee */}
-        <div className="w-full mask-gradient-y">
-          <MarqueeRow names={clientNames} direction="left" />
-        </div>
+        
 
         {/* Centerpiece Text (now in the normal layout flow) */}
-        <div className="relative h-48 flex flex-col items-center justify-center text-center">
+        <div className="relative h-[22rem] flex flex-col items-center justify-center text-center">
           <motion.h2
             style={{ scale: heroScale, opacity: heroOpacity }}
-            className="absolute inset-0 text-8xl sm:text-9xl lg:text-[12rem] font-extrabold text-[rgb(var(--color-primary))] leading-none flex items-center justify-center"
+            className="inset-0 text-8xl sm:text-9xl lg:text-[12rem] font-extrabold text-[rgb(var(--color-primary))] leading-none flex items-center justify-center"
           >
             25+
           </motion.h2>
           <motion.p
             style={{ opacity: subheadOpacity, y: subheadY }}
-            className="absolute inset-0 text-2xl sm:text-3xl lg:text-4xl font-semibold text-[rgb(var(--color-text-main))] leading-relaxed flex items-center justify-center"
+            className="mt-[40px] inset-0 text-2xl sm:text-3xl lg:text-4xl font-semibold text-[rgb(var(--color-text-main))] leading-relaxed flex items-center justify-center"
           >
             Businesses Launched.
           </motion.p>
         </div>
 
-        {/* Bottom Marquee */}
         <div className="w-full mask-gradient-y">
-          <MarqueeRow names={[...clientNames].reverse()} direction="right" />
+          <MarqueeRow names={clientNames} direction="left" />
         </div>
       </div>
     </section>

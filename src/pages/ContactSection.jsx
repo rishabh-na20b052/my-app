@@ -122,6 +122,26 @@ const ContactSection = () => {
               <p className="text-[rgb(var(--color-text-secondary))] mb-8 text-sm md:text-base text-center md:text-left">
                 Let's discuss how CodeIt can help you launch and scale your vision from idea to reality.
               </p>
+              <a
+                href="https://calendly.com/shoaibmustaque10/appointment"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative inline-flex max-w-[12rem] h-12 overflow-hidden rounded-full p-[1px] group"
+              >
+                <span
+                  className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] 
+                               bg-[conic-gradient(from_90deg_at_50%_50%,rgb(var(--color-primary))_0%,rgb(var(--color-secondary))_50%,rgb(var(--color-primary))_100%)]"
+                />
+
+                {/* FIX: Added `relative` to this span to ensure it sits on top of the absolute spinning span */}
+                <span
+                  className="relative inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full
+                             bg-[rgb(var(--color-surface))] px-8 py-3 text-sm font-medium text-[rgb(var(--color-text-main))]
+                             transition-colors group-hover:bg-[rgb(var(--color-background))]"
+                >
+                  Get Consultation
+                </span>
+              </a>
             </div>
           </div>
         </div>

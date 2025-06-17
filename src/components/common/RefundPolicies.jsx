@@ -9,7 +9,7 @@ const RefundPolicies = () => {
   });
 
   return (
-    <div className="min-h-screen bg-[rgb(var(--color-background))] text-[rgb(var(--color-text-main))] py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+    <div className="min-h-screen text-[rgb(var(--color-text-main))] py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       <div className="max-w-4xl mx-auto bg-[rgb(var(--color-surface))] p-8 md:p-12 rounded-2xl shadow-xl border border-[rgba(var(--color-primary),0.2)]">
         <h1 className="text-4xl md:text-5xl font-extrabold text-[rgb(var(--color-primary))] mb-6">
           📄 Refund Policies
